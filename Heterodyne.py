@@ -40,6 +40,7 @@ Imeas = Emeas * np.conj(Emeas)
 Imeas_calc = (A1/np.sqrt(2))**2 + (A2/np.sqrt(2))**2 + 2*(A1/np.sqrt(2))*(A2/np.sqrt(2))*np.cos(2*np.pi*Dif_F*timeline + Phase_m - Phase_r)
 
 
+
 if 1:
     plt.figure(1)
      
