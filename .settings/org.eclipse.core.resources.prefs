@@ -26,6 +26,7 @@ encoding/EOM_sideband_Beat.py=utf-8
 encoding/Ellipse_Fit_Func.py=utf-8
 encoding/Fiber_Coupler_Interference.py=utf-8
 encoding/Heterodyne.py=utf-8
+encoding/Heterodyne_Contrast.py=utf-8
 encoding/Interferometer.py=utf-8
 encoding/Lissajous.py=utf-8
 encoding/angle_cal.py=utf-8
