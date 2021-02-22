@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//Heterodyne_Contrast/Basic_Function.py=utf-8
 encoding//Tilt_Heterodyen_Test/Tilt_Heterodyen_1_tilt_center.py=utf-8
 encoding//Tilt_Heterodyen_Test/Tilt_Heterodyne_3D.py=utf-8
 encoding//Tilt_Heterodyen_Test/Tilt_Heterodyne_FiberTest.py=utf-8
@@ -26,7 +27,6 @@ encoding/EOM_sideband_Beat.py=utf-8
 encoding/Ellipse_Fit_Func.py=utf-8
 encoding/Fiber_Coupler_Interference.py=utf-8
 encoding/Heterodyne.py=utf-8
-encoding/Heterodyne_Contrast.py=utf-8
 encoding/Interferometer.py=utf-8
 encoding/Lissajous.py=utf-8
 encoding/angle_cal.py=utf-8
