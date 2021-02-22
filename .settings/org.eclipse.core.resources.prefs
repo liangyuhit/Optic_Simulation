@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//Heterodyne_Contrast/1D_shift.py=utf-8
 encoding//Heterodyne_Contrast/1D_shift_readout.py=utf-8
+encoding//Heterodyne_Contrast/1D_tilt.py=utf-8
+encoding//Heterodyne_Contrast/1D_tilt_readout.py=utf-8
 encoding//Heterodyne_Contrast/Basic_Function.py=utf-8
 encoding//Tilt_Heterodyen_Test/Tilt_Heterodyen_1_tilt_center.py=utf-8
 encoding//Tilt_Heterodyen_Test/Tilt_Heterodyne_3D.py=utf-8
@@ -32,3 +34,4 @@ encoding/Heterodyne.py=utf-8
 encoding/Interferometer.py=utf-8
 encoding/Lissajous.py=utf-8
 encoding/angle_cal.py=utf-8
+encoding/plt_style.py=utf-8

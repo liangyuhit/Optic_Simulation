@@ -35,7 +35,7 @@ def R_z(Z_R, Z):
 def Phi_Gouy(Z_R, Z):
     return np.arctan(Z/Z_R)    
 
-def f(X, Y, L=0.1, V_m_x=0e-5, V_m_y=0, V_r_x=0, V_r_y=0, M_m=0e-3, N_m=0, M_r=0, N_r=0, w_0=w_0, Z_R=Z_R,A_mea=1,A_ref=1,t=0):
+def f(X, Y, L=0.5, V_m_x=0e-5, V_m_y=0, V_r_x=0, V_r_y=0, M_m=0e-3, N_m=0, M_r=0, N_r=0, w_0=w_0, Z_R=Z_R,A_mea=1,A_ref=1,t=0):
     
     k = 2 * np.pi / Lamda
     I_0 = 1
@@ -76,22 +76,22 @@ dy = dx
 X, Y = np.meshgrid(dx, dy)
 
 '''
-    光斑平移的影响，平行光，不同光斑尺寸
+    光束平行度的影响，不同光斑尺寸
 '''
 
-M_m_set = np.linspace(start=-20e-3, stop=20e-3, num=301)
+V_m_x_set = np.linspace(start=-500e-6, stop=500e-6, num=301)
 w_0_set = [1.5e-3, 3e-3, 4.5e-3]
 Z_R_set = [np.pi * i**2 / Lamda for i in w_0_set]
 
-contrast_set = np.empty(shape=(len(w_0_set),len(M_m_set)))
+contrast_set = np.empty(shape=(len(w_0_set),len(V_m_x_set)))
 
 for i in range(len(w_0_set)):
     w_0 = w_0_set[i]
     Z_R = Z_R_set[i]
-    for j in tqdm(range(len(M_m_set))):
+    for j in tqdm(range(len(V_m_x_set))):
         result = []
         for k in range(100):
-            a = f(X,Y,M_m=M_m_set[j],w_0=w_0,Z_R=Z_R,t=timeline[k])
+            a = f(X,Y,V_m_x=V_m_x_set[j],w_0=w_0,Z_R=Z_R,t=timeline[k])
             result.append(a)
         con = (np.max(result) - np.min(result))/np.max(result)
         contrast_set[i,j] = con
@@ -99,16 +99,16 @@ for i in range(len(w_0_set)):
 '''
     Writting
 ''' 
-with open('1D_shift.npy', 'wb') as f:
-    np.savez(f,M_m_set=M_m_set, w_0_set=w_0_set, contrast_set=contrast_set)
+with open('1D_tilt.npy', 'wb') as f:
+    np.savez(f,V_m_x_set=V_m_x_set, w_0_set=w_0_set, contrast_set=contrast_set)
 
 '''
     Plot
 '''
 colorset = ['black','blue','red','green']
 for i in range(len(w_0_set)):
-    plt.plot(M_m_set*1e3, contrast_set[i], color=colorset[i],label='光斑直径%i mm'%(w_0_set[i]*1e3*2))    
+    plt.plot(V_m_x_set*1e6, contrast_set[i], color=colorset[i],label='光斑直径%i mm'%(w_0_set[i]*1e3*2))    
 plt.ylabel('对比度')
-plt.xlabel('平移量/mm')
+plt.xlabel('平移量/urad')
 plt.legend(loc='upper left')
 plt.show()
