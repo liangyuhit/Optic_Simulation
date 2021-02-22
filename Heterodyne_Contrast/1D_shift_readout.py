@@ -13,7 +13,6 @@ colors = color_set_medium
 '''
     readout
 '''
-Lamda = 633e-9
 npzfile = np.load('1D_shift.npy')
 print(npzfile.files)
 M_m_set = npzfile['M_m_set']

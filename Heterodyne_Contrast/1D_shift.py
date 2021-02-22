@@ -35,7 +35,7 @@ def R_z(Z_R, Z):
 def Phi_Gouy(Z_R, Z):
     return np.arctan(Z/Z_R)    
 
-def f(X, Y, L=0.1, V_m_x=0e-5, V_m_y=0, V_r_x=0, V_r_y=0, M_m=0e-3, N_m=0, M_r=0, N_r=0, w_0=w_0, Z_R=Z_R,A_mea=1,A_ref=1,t=0):
+def f(X, Y, L=0.5, V_m_x=0e-5, V_m_y=0, V_r_x=0, V_r_y=0, M_m=0e-3, N_m=0, M_r=0, N_r=0, w_0=w_0, Z_R=Z_R,A_mea=1,A_ref=1,t=0):
     
     k = 2 * np.pi / Lamda
     I_0 = 1
@@ -80,7 +80,7 @@ X, Y = np.meshgrid(dx, dy)
 '''
 
 M_m_set = np.linspace(start=-20e-3, stop=20e-3, num=301)
-w_0_set = [1e-3,1.5e-3, 3e-3, 4.5e-3]
+w_0_set = [1.5e-3, 3e-3, 4.5e-3]
 Z_R_set = [np.pi * i**2 / Lamda for i in w_0_set]
 
 contrast_set = np.empty(shape=(len(w_0_set),len(M_m_set)))
@@ -91,7 +91,7 @@ for i in range(len(w_0_set)):
     for j in tqdm(range(len(M_m_set))):
         result = []
         for k in range(100):
-            a = f(X,Y,M_m=M_m_set[j],w_0=w_0,Z_R=Z_R,t=timeline[k])
+            a = f(X,Y,M_m=M_m_set[j],V_m_x=20e-6,w_0=w_0,Z_R=Z_R,t=timeline[k])
             result.append(a)
         con = (np.max(result) - np.min(result))/np.max(result)
         contrast_set[i,j] = con
