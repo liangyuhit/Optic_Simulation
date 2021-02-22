@@ -35,6 +35,6 @@ plt.xlabel('平移量$\mathrm{(urad)}$')
 plt.legend(loc='upper left')
 plt.grid(which='major', axis='both', linestyle='dotted', linewidth=1)
 plt.tight_layout()
-# plt.show()
-plt.savefig(r'/Users/yl/Documents/Eclipse Workspace/Optic_Simulation/Heterodyne_Contrast/1D_tilt.jpg', dpi=600) #指定分辨率保存
+plt.show()
+# plt.savefig(r'/Users/yl/Documents/Eclipse Workspace/Optic_Simulation/Heterodyne_Contrast/1D_tilt.jpg', dpi=600) #指定分辨率保存
 # plt.savefig(r'C:\Users\yuxiaoyang\Desktop\Fig_4_10.jpg', dpi=600) #指定分辨率保存

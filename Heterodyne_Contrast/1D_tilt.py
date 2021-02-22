@@ -80,7 +80,7 @@ X, Y = np.meshgrid(dx, dy)
 '''
 
 V_m_x_set = np.linspace(start=-500e-6, stop=500e-6, num=301)
-w_0_set = [1.5e-3, 3e-3, 4.5e-3]
+w_0_set = [1e-3,1.5e-3, 3e-3, 4.5e-3]
 Z_R_set = [np.pi * i**2 / Lamda for i in w_0_set]
 
 contrast_set = np.empty(shape=(len(w_0_set),len(V_m_x_set)))
