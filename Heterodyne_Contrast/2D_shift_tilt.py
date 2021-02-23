@@ -79,8 +79,8 @@ X, Y = np.meshgrid(dx, dy)
     光斑平移的影响，平行光，不同光斑尺寸
 '''
 
-M_m_set = np.linspace(start=-10e-3, stop=10e-3, num=31)
-V_m_x_set = np.linspace(start=-200e-6, stop=200e-6, num=31)
+M_m_set = np.linspace(start=-10e-3, stop=10e-3, num=301)
+V_m_x_set = np.linspace(start=-200e-6, stop=200e-6, num=301)
 w_0_set = [1.5e-3, 3e-3, 4.5e-3]
 Z_R_set = [np.pi * i**2 / Lamda for i in w_0_set]
 
