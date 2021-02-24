@@ -20,24 +20,18 @@ M_m_set = npzfile['M_m_set']
 V_m_x_set = npzfile['V_m_x_set']
 w_0_set = npzfile['w_0_set']
 contrast_set = npzfile['contrast_set']
-print(np.shape(contrast_set))
 
 '''
     plot
 ''' 
-fig = plt.figure('平行度 & 平移')
-plt.gcf().set_size_inches(15/2.54, 14/2.54)
-ax1 = fig.add_subplot(2, 2, 1, projection='3d')
-ax2 = fig.add_subplot(2, 2, 2, projection='3d',sharex=ax1,sharey=ax1,sharez=ax1)
-ax3 = fig.add_subplot(2, 2, 3, projection='3d',sharex=ax1,sharey=ax1,sharez=ax1)
-ax4 = fig.add_subplot(2, 2, 4, projection='3d',sharex=ax1,sharey=ax1,sharez=ax3)
-
+fig1 = plt.figure('平行度 & 平移（3D）')
+plt.gcf().set_size_inches(25/2.54, 8/2.54)
+ax1 = fig1.add_subplot(1, 3, 1, projection='3d')
+ax2 = fig1.add_subplot(1, 3, 2, projection='3d',sharex=ax1,sharey=ax1,sharez=ax1)
+ax3 = fig1.add_subplot(1, 3, 3, projection='3d',sharex=ax1,sharey=ax1,sharez=ax1)
+ 
 V_m_x_set, M_m_set = np.meshgrid(V_m_x_set, M_m_set)
-print(np.shape(M_m_set))
-print(np.shape(V_m_x_set))
-print(np.shape(contrast_set[0]))
-print(1)
-axes = [ax1,ax2,ax3,ax4]
+axes = [ax1,ax2,ax3]
 for i in range(3):
     ax = axes[i]
     ax.plot_surface(M_m_set*1e3, V_m_x_set*1e6, contrast_set[i], cmap='jet', rstride=1, cstride=1,
@@ -48,7 +42,31 @@ for i in range(3):
 ax1.view_init(20, -50)
 ax2.view_init(20, -50)
 ax3.view_init(20, -50)
-ax4.view_init(20, -50)
-plt.show()
-# plt.savefig(r'/Users/yl/Documents/Eclipse Workspace/Optic_Simulation/Heterodyne_Contrast/2D_tilt_shift.jpg', dpi=600) #指定分辨率保存
+# plt.tight_layout()
+# plt.show()
+plt.savefig(r'/Users/yl/Documents/Eclipse Workspace/Optic_Simulation/Heterodyne_Contrast/2D_tilt_shift_surf.jpg', dpi=600) #指定分辨率保存
 # plt.savefig(r'C:\Users\yuxiaoyang\Desktop\Fig_4_10.jpg', dpi=600) #指定分辨率保存
+
+
+
+fig2 = plt.figure('平行度 & 平移（2D）')
+plt.gcf().set_size_inches(25/2.54, 8/2.54)
+ax4 = fig2.add_subplot(1, 3, 1)
+ax5 = fig2.add_subplot(1, 3, 2, sharex=ax4,sharey=ax4)
+ax6 = fig2.add_subplot(1, 3, 3, sharex=ax4,sharey=ax4)
+V_m_x_set, M_m_set = np.meshgrid(V_m_x_set, M_m_set)
+axes = [ax4,ax5,ax6]
+for i in range(3):
+    ax = axes[i]
+    extent = []
+    ax.imshow(contrast_set[i],origin='lower', cmap='jet')
+    ax.set_ylabel('角度偏差$\mathrm{(\u03BCrad)}$')
+    ax.set_xlabel('平移量$\mathrm{(mm)}$')
+plt.tight_layout()
+# plt.show()   
+plt.savefig(r'/Users/yl/Documents/Eclipse Workspace/Optic_Simulation/Heterodyne_Contrast/2D_tilt_shift_imshow.jpg', dpi=600) #指定分辨率保存
+
+    
+    
+    
+    
